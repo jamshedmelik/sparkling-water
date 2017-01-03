@@ -13,11 +13,15 @@ dependencies {
   // And Scala library
   compile "org.scala-lang:scala-library:${scalaVersion}"
 
+  // Add DeepWater if in provided
+  if (file("${rootDir}/lib/deepwater-all.jar").exists()) {
+    compile files("${rootDir}/lib/deepwater-all.jar")
+  }
+
   // And use scalatest for Scala testing
   testCompile "org.scalatest:scalatest_${scalaBaseVersion}:2.2.1"
   testCompile "junit:junit:4.11"
   testCompile project(':sparkling-water-core').sourceSets.test.output
-
 }
 
 // add additional source set for desired scala version
